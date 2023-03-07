@@ -1,9 +1,10 @@
 ## ----data, echo=TRUE----------------------------------------------------------
 library("dcTensor")
-X <- toyModel("NMF")
+X <- dcTensor::toyModel("dNMF")
 
-## ----data2, echo=TRUE, fig.height=4, fig.width=4------------------------------
-image(X, main="Original Data")
+## ----data2, echo=TRUE, fig.height=4, fig.width=5------------------------------
+suppressMessages(library("fields"))
+image.plot(X, main="Original Data", legend.mar=8)
 
 ## ----bmf, echo=TRUE-----------------------------------------------------------
 set.seed(123456)
@@ -18,8 +19,8 @@ plot(log10(out_BMF$RelChange[2:101]), type="b", main="Relative Change")
 ## ----rec_bmf, echo=TRUE, fig.height=4, fig.width=8----------------------------
 recX <- out_BMF$U %*% t(out_BMF$V)
 layout(t(1:2))
-image(X, main="Original Data")
-image(recX, main="Reconstructed Data (BMF)")
+image.plot(X, main="Original Data", legend.mar=8)
+image.plot(recX, main="Reconstructed Data (BMF)", legend.mar=8)
 
 ## ----u_v, echo=TRUE, fig.height=4, fig.width=8--------------------------------
 layout(t(1:2))
@@ -35,11 +36,11 @@ head(round(out_BMF$U, 0))
 head(round(out_BMF$V, 0))
 
 ## ----data3, echo=TRUE---------------------------------------------------------
-library("nnTensor")
+suppressMessages(library("nnTensor"))
 X2 <- nnTensor::toyModel("NMF")
 
-## ----data4, echo=TRUE, fig.height=4, fig.width=4------------------------------
-image(X2, main="Original Data")
+## ----data4, echo=TRUE, fig.height=4, fig.width=5------------------------------
+image.plot(X2, main="Original Data", legend.mar=8)
 
 ## ----sbmf, echo=TRUE----------------------------------------------------------
 set.seed(123456)
@@ -54,8 +55,8 @@ plot(log10(out_SBMF$RelChange[2:101]), type="b", main="Relative Change")
 ## ----rec_sbmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
 recX2 <- out_SBMF$U %*% t(out_SBMF$V)
 layout(t(1:2))
-image(X2, main="Original Data")
-image(recX2, main="Reconstructed Data (SBMF)")
+image.plot(X2, main="Original Data", legend.mar=8)
+image.plot(recX2, main="Reconstructed Data (SBMF)", legend.mar=8)
 
 ## ----u_v4, echo=TRUE, fig.height=4, fig.width=8-------------------------------
 layout(t(1:2))
@@ -75,8 +76,8 @@ plot(log10(out_STMF$RelChange[2:101]), type="b", main="Relative Change")
 ## ----rec_stmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
 recX <- out_STMF$U %*% t(out_STMF$V)
 layout(t(1:2))
-image(X, main="Original Data")
-image(recX, main="Reconstructed Data (STMF)")
+image.plot(X2, main="Original Data", legend.mar=8)
+image.plot(recX, main="Reconstructed Data (STMF)", legend.mar=8)
 
 ## ----u_v5, echo=TRUE, fig.height=4, fig.width=8-------------------------------
 layout(t(1:2))
