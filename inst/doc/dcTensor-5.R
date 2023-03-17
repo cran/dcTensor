@@ -16,8 +16,8 @@ str(out_dPLS, 2)
 
 ## ----conv_pls, echo=TRUE, fig.height=4, fig.width=8---------------------------
 layout(t(1:2))
-plot(log10(out_dPLS$RecError[2:101]), type="b", main="Reconstruction Error")
-plot(log10(out_dPLS$RelChange[2:101]), type="b", main="Relative Change")
+plot(log10(out_dPLS$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_dPLS$RelChange[-1]), type="b", main="Relative Change")
 
 ## ----rec_pls, echo=TRUE, fig.height=5, fig.width=8----------------------------
 recX <- lapply(seq_along(X), function(x){

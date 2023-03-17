@@ -13,8 +13,8 @@ str(out_dNTD, 2)
 
 ## ----conv_bmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
 layout(t(1:2))
-plot(log10(out_dNTD$RecError[2:101]), type="b", main="Reconstruction Error")
-plot(log10(out_dNTD$RelChange[2:101]), type="b", main="Relative Change")
+plot(log10(out_dNTD$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_dNTD$RelChange[-1]), type="b", main="Relative Change")
 
 ## ----rec_bmf, echo=TRUE, fig.height=4, fig.width=8----------------------------
 recX <- recTensor(out_dNTD$S, out_dNTD$A)
@@ -39,8 +39,8 @@ str(out_dNTD2, 2)
 
 ## ----conv_sbmf, echo=TRUE, fig.height=4, fig.width=8--------------------------
 layout(t(1:2))
-plot(log10(out_dNTD2$RecError[2:101]), type="b", main="Reconstruction Error")
-plot(log10(out_dNTD2$RelChange[2:101]), type="b", main="Relative Change")
+plot(log10(out_dNTD2$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_dNTD2$RelChange[-1]), type="b", main="Relative Change")
 
 ## ----rec_sbmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
 recX <- recTensor(out_dNTD2$S, out_dNTD2$A)

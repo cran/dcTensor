@@ -13,8 +13,8 @@ str(out_STMF, 2)
 
 ## ----conv_stmf, echo=TRUE, fig.height=4, fig.width=8--------------------------
 layout(t(1:2))
-plot(log10(out_STMF$RecError[2:101]), type="b", main="Reconstruction Error")
-plot(log10(out_STMF$RelChange[2:101]), type="b", main="Relative Change")
+plot(log10(out_STMF$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_STMF$RelChange[-1]), type="b", main="Relative Change")
 
 ## ----rec_stmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
 recX <- out_STMF$U %*% t(out_STMF$V)

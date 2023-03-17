@@ -16,8 +16,8 @@ str(out_dsiNMF, 2)
 
 ## ----conv_bmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
 layout(t(1:2))
-plot(log10(out_dsiNMF$RecError[2:101]), type="b", main="Reconstruction Error")
-plot(log10(out_dsiNMF$RelChange[2:101]), type="b", main="Relative Change")
+plot(log10(out_dsiNMF$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_dsiNMF$RelChange[-1]), type="b", main="Relative Change")
 
 ## ----rec_bmf, echo=TRUE, fig.height=5, fig.width=8----------------------------
 recX <- lapply(seq_along(X), function(x){
@@ -53,8 +53,8 @@ str(out_dsiNMF2, 2)
 
 ## ----conv_sbmf, echo=TRUE, fig.height=4, fig.width=8--------------------------
 layout(t(1:2))
-plot(log10(out_dsiNMF2$RecError[2:101]), type="b", main="Reconstruction Error")
-plot(log10(out_dsiNMF2$RelChange[2:101]), type="b", main="Relative Change")
+plot(log10(out_dsiNMF2$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_dsiNMF2$RelChange[-1]), type="b", main="Relative Change")
 
 ## ----rec_sbmf, echo=TRUE, fig.height=5, fig.width=8---------------------------
 recX <- lapply(seq_along(X2), function(x){

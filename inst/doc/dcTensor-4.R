@@ -17,8 +17,8 @@ str(out_djNMF, 2)
 
 ## ----conv_sbmf, echo=TRUE, fig.height=4, fig.width=8--------------------------
 layout(t(1:2))
-plot(log10(out_djNMF$RecError[2:101]), type="b", main="Reconstruction Error")
-plot(log10(out_djNMF$RelChange[2:101]), type="b", main="Relative Change")
+plot(log10(out_djNMF$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_djNMF$RelChange[-1]), type="b", main="Relative Change")
 
 ## ----rec_sbmf, echo=TRUE, fig.height=8, fig.width=8---------------------------
 recX1 <- lapply(seq_along(X), function(x){
