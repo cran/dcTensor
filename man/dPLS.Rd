@@ -3,7 +3,7 @@
 \alias{dPLS}
 
 \title{
-Discretized Peartial Least Squares (dPLS)
+Discretized Partial Least Squares (dPLS)
 }
 \description{
 The input data is assumed to be a matrix.
@@ -80,7 +80,6 @@ If verbose == TRUE, Error change rate is generated in console window.
   TestRecError : The reconstruction error calculated by test set
   (missing values specified by M).
   RelChange : The relative change of the error.
-  TerTerm_V : The ternary regularization term for Vs.
 }
 
 \author{Koki Tsuyuzaki}

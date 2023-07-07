@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<meta name="date" content="2023-06-23" />
+<meta name="date" content="2023-07-07" />
 
 <title>5. Discretized Partial Least Squares (dPLS)</title>
 
@@ -366,7 +366,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 Laboratory for Bioinformatics Research, RIKEN Center for Biosystems
 Dynamics Research<br><a class="author_email" href="mailto:#"><a href="mailto:k.t.the-answer@hotmail.co.jp" class="email">k.t.the-answer@hotmail.co.jp</a></a>
 </address>
-<h4 class="date">2023-06-23</h4>
+<h4 class="date">2023-07-07</h4>
 
 
 
@@ -412,7 +412,7 @@ ternary regularization parameter as a large value like the below:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>out_dPLS <span class="ot">&lt;-</span> <span class="fu">dPLS</span>(X, <span class="at">Ter_V=</span><span class="fl">1E+5</span>, <span class="at">J=</span><span class="dv">3</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(out_dPLS, <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## List of 7
+<pre><code>## List of 6
 ##  $ U            :List of 3
 ##   ..$ : num [1:100, 1:3] 8722 8926 8821 8626 8589 ...
 ##   ..$ : num [1:100, 1:3] 5888 5898 6044 5910 5695 ...
@@ -428,8 +428,6 @@ ternary regularization parameter as a large value like the below:</p>
 ##  $ TestRecError : Named num [1:101] 1e-09 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 ...
 ##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
 ##  $ RelChange    : Named num [1:101] 1.00e-09 9.92e-01 5.11e-03 2.20e-02 2.12e-02 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
-##  $ TerTerm_V    : Named num [1:101] 1.00e-09 7.62e+01 7.56e+01 7.73e+01 7.89e+01 ...
 ##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</code></pre>
 <p>The reconstruction error (<code>RecError</code>) and relative error
 (<code>RelChange</code>, the amount of change from the reconstruction
@@ -491,8 +489,8 @@ looks ternary.</p>
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] nnTensor_1.2.0    fields_14.1       viridis_0.6.3     viridisLite_0.4.2
-## [5] spam_2.9-1        dcTensor_1.1.0   
+## [1] nnTensor_1.1.13   fields_14.1       viridis_0.6.3     viridisLite_0.4.2
+## [5] spam_2.9-1        dcTensor_1.2.0   
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] gtable_0.3.3       jsonlite_1.8.5     highr_0.10         dplyr_1.1.2       

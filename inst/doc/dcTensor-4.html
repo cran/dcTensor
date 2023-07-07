@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 
-<meta name="date" content="2023-06-23" />
+<meta name="date" content="2023-07-07" />
 
 <title>4. Discretized Joint Non-negative Matrix Factrozation (djNMF)</title>
 
@@ -366,7 +366,7 @@ Factrozation (<code>djNMF</code>)</h1>
 Laboratory for Bioinformatics Research, RIKEN Center for Biosystems
 Dynamics Research<br><a class="author_email" href="mailto:#"><a href="mailto:k.t.the-answer@hotmail.co.jp" class="email">k.t.the-answer@hotmail.co.jp</a></a>
 </address>
-<h4 class="date">2023-06-23</h4>
+<h4 class="date">2023-07-07</h4>
 
 
 
@@ -416,7 +416,7 @@ below:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123456</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>out_djNMF <span class="ot">&lt;-</span> <span class="fu">djNMF</span>(X, <span class="at">Bin_W=</span><span class="fl">1E-1</span>, <span class="at">J=</span><span class="dv">4</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(out_djNMF, <span class="dv">2</span>)</span></code></pre></div>
-<pre><code>## List of 13
+<pre><code>## List of 7
 ##  $ W            : num [1:100, 1:4] 0.343 0.338 0.346 0.344 0.342 ...
 ##  $ V            :List of 3
 ##   ..$ : num [1:100, 1:4] 2.04e-56 4.12e-56 2.27e-54 2.49e-55 7.58e-56 ...
@@ -433,18 +433,6 @@ below:</p>
 ##  $ TestRecError : Named num [1:101] 1e-09 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 0e+00 ...
 ##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
 ##  $ RelChange    : Named num [1:101] 1.00e-09 1.95e-01 1.12e-01 3.46e-02 3.96e-03 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
-##  $ BinTerm_W    : Named num [1:101] 1.00e-09 1.55e+04 5.17e+03 7.46e+02 9.03e+01 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
-##  $ BinTerm_V    : Named num [1:101] 1.00e-09 1.09e+02 3.69e+02 4.91e+02 3.47e+02 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
-##  $ BinTerm_H    : Named num [1:101] 1.00e-09 7.40e+03 1.62e+05 1.39e+06 7.26e+06 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
-##  $ TerTerm_W    : Named num [1:101] 1.00e-09 3.97e+04 2.78e+03 3.48e+01 3.62e+01 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
-##  $ TerTerm_V    : Named num [1:101] 1.00e-09 8.40e+01 8.54e+01 9.73e+01 9.04e+01 ...
-##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...
-##  $ TerTerm_H    : Named num [1:101] 1.00e-09 3.00e+03 1.46e+06 5.75e+07 8.44e+08 ...
 ##   ..- attr(*, &quot;names&quot;)= chr [1:101] &quot;offset&quot; &quot;1&quot; &quot;2&quot; &quot;3&quot; ...</code></pre>
 <p>The reconstruction error (<code>RecError</code>) and relative error
 (<code>RelChange</code>, the amount of change from the reconstruction
@@ -512,8 +500,8 @@ binary.</p>
 ## [1] stats     graphics  grDevices utils     datasets  methods   base     
 ## 
 ## other attached packages:
-## [1] nnTensor_1.2.0    fields_14.1       viridis_0.6.3     viridisLite_0.4.2
-## [5] spam_2.9-1        dcTensor_1.1.0   
+## [1] nnTensor_1.1.13   fields_14.1       viridis_0.6.3     viridisLite_0.4.2
+## [5] spam_2.9-1        dcTensor_1.2.0   
 ## 
 ## loaded via a namespace (and not attached):
 ##  [1] gtable_0.3.3       jsonlite_1.8.5     highr_0.10         dplyr_1.1.2       
