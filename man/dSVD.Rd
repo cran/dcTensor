@@ -3,11 +3,16 @@
 \alias{dSVD}
 
 \title{
-Discretized Gradient Descent Singular Value Decomposition (dSVD)
+Discretized Singular Value Decomposition (dSVD)
 }
 \description{
-The input data is assumed to be a matrix.
-dSVD decompose the matrix to two low-dimensional factor matices.
+This function is the discretized version of SVD.
+The input data X is decomposed to a matrix product U V'.
+Unlike regular SVD, in dSVD,
+U and V are estimated by adding binary regularization
+so that the values are 0 or 1 as much as possible.
+Likewise, U and V are estimated by adding ternary regularization
+so that the values are -1, 0, or 1 as much as possible.
 }
 \usage{
 dSVD(X, M=NULL, pseudocount=.Machine$double.eps,
@@ -43,7 +48,7 @@ Whether the factor matrix V is updated in each iteration step
 (Default: FALSE).
 }
 \item{Ter_U}{
-Paramter for terary (0,1,2) regularitation (Default: 1e-10).
+Paramter for terary (-1,0,1) regularitation (Default: 1e-10).
 }
 \item{L1_U}{
 Paramter for L1 regularitation (Default: 1e-10).
@@ -57,7 +62,7 @@ Paramter for L2 regularitation (Default: 1e-10).
 Stepsize of gradient descent algorithm (Default: 1e+10).
 }
 \item{J}{
-The number of low-dimension (J < {N, M}, Default: 3)
+The number of low-dimension (J < \{N, M\}, Default: 3)
 }
 \item{thr}{
 When error change rate is lower than thr, the iteration is terminated
@@ -78,8 +83,8 @@ If verbose == TRUE, Error change rate is generated in console window.
 }
 
 \value{
-  U : A matrix which has N-rows and J-columns (J < {N, M}).
-  V : A matrix which has M-rows and J-columns (J < {N, M}).
+  U : A matrix which has N-rows and J-columns (J < \{N, M\}).
+  V : A matrix which has M-rows and J-columns (J < \{N, M\}).
   RecError : The reconstruction error between data tensor and reconstructed
   tensor from U and V.
   TrainRecError : The reconstruction error calculated by training set

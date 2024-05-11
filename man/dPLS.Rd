@@ -6,8 +6,14 @@
 Discretized Partial Least Squares (dPLS)
 }
 \description{
-The input data is assumed to be a matrix.
-dPLS decompose the matrix to two low-dimensional factor matices.
+This function is the discretized version of PLS.
+The input data objects are assumed to be a list containing multiple matrices
+(X_1, X_2, ..., X_K),
+and decomposed to multiple matrix products (U_1 V_1', U_2 V_2', ..., U_K V_K'),
+where each U_k and V_k (k=1..K) is specific in each X_k.
+Unlike regular PLS, in dPLS,
+U_k and V_k are estimated by adding ternary regularization
+so that the values are -1, 0, or 1 as much as possible.
 }
 \usage{
 dPLS(X, M=NULL, pseudocount=.Machine$double.eps,
@@ -36,7 +42,7 @@ Whether the factor matrix V is updated in each iteration step
 (Default: FALSE).
 }
 \item{Ter_V}{
-Paramter for terary (0,1,2) regularitation (Default: 1e-10).
+Paramter for terary (-1,0,1) regularitation (Default: 1e-10).
 }
 \item{L1_V}{
 Paramter for L1 regularitation (Default: 1e-10).
@@ -50,7 +56,7 @@ Paramter for L2 regularitation (Default: 1e-10).
 Stepsize of gradient descent algorithm (Default: 1e+10).
 }
 \item{J}{
-The number of low-dimension (J < {N, M}, Default: 3)
+The number of low-dimension (J < \{N, M\}, Default: 3)
 }
 \item{thr}{
 When error change rate is lower than thr, the iteration is terminated
@@ -71,8 +77,8 @@ If verbose == TRUE, Error change rate is generated in console window.
 }
 
 \value{
-  U : A matrix which has N-rows and J-columns (J < {N, M}).
-  V : A matrix which has M-rows and J-columns (J < {N, M}).
+  U : A matrix which has N-rows and J-columns (J < \{N, M\}).
+  V : A matrix which has M-rows and J-columns (J < \{N, M\}).
   RecError : The reconstruction error between data tensor and reconstructed
   tensor from U and V.
   TrainRecError : The reconstruction error calculated by training set

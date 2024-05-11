@@ -6,8 +6,14 @@
 Discretized Non-negative Matrix Factorization Algorithms (dNMF)
 }
 \description{
-The input data is assumed to be a non-negative matrix.
-dNMF decompose the matrix to two low-dimensional factor matices.
+This function is the discretized version of nnTensor::NMF.
+The input data X is assumed to be a non-negative matrix
+and decomposed to a matrix product U V'.
+Unlike regular NMF, in dNMF,
+U and V are estimated by adding binary regularization
+so that the values are 0 or 1 as much as possible.
+Likewise, U and V are estimated by adding ternary regularization
+so that the values are 0, 1, or 2 as much as possible.
 }
 \usage{
 dNMF(X, M=NULL, pseudocount=.Machine$double.eps,
@@ -73,7 +79,7 @@ Paramter for L2 regularitation (Default: 1e-10).
 Paramter for L2 regularitation (Default: 1e-10).
 }
 \item{J}{
-The number of low-dimension (J < {N, M}, Default: 3)
+The number of low-dimension (J < \{N, M\}, Default: 3)
 }
 \item{algorithm}{
 dNMF algorithms. "Frobenius", "KL", "IS", and "Beta" are available (Default: "Frobenius").
@@ -100,8 +106,8 @@ If verbose == TRUE, Error change rate is generated in console window.
 }
 
 \value{
-  U : A matrix which has N-rows and J-columns (J < {N, M}).
-  V : A matrix which has M-rows and J-columns (J < {N, M}).
+  U : A matrix which has N-rows and J-columns (J < \{N, M\}).
+  V : A matrix which has M-rows and J-columns (J < \{N, M\}).
   RecError : The reconstruction error between data tensor and reconstructed
   tensor from U and V.
   TrainRecError : The reconstruction error calculated by training set

@@ -1,3 +1,15 @@
+VERSION 1.3.0
+------------------------
+   o dNMTF() was added
+
+VERSION 1.2.3
+------------------------
+   o JOSS accepted
+
+VERSION 1.2.1
+------------------------
+   o Debugged tests
+
 VERSION 1.2.0
 ------------------------
    o {Binary,Ternary}-regularization terms are removed because of the calculation time issue

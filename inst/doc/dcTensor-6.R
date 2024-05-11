@@ -1,58 +1,44 @@
 ## ----data, echo=TRUE----------------------------------------------------------
 library("dcTensor")
-X <- dcTensor::toyModel("dNTF")
+X <- dcTensor::toyModel("dPLS_Easy")
 
-## ----data2, echo=TRUE, fig.height=8, fig.width=8------------------------------
-suppressMessages(library("nnTensor"))
-plotTensor3D(X)
-
-## ----bmf, echo=TRUE, fig.height=4, fig.width=8--------------------------------
-set.seed(123456)
-out_dNTF <- dNTF(X, Bin_A=c(1e+2, 1e+2, 1e+2), algorithm="KL", rank=4)
-str(out_dNTF, 2)
-
-## ----conv_bmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
-layout(t(1:2))
-plot(log10(out_dNTF$RecError[-1]), type="b", main="Reconstruction Error")
-plot(log10(out_dNTF$RelChange[-1]), type="b", main="Relative Change")
-
-## ----rec_bmf, echo=TRUE, fig.height=4, fig.width=8----------------------------
-recX <- recTensor(out_dNTF$S, out_dNTF$A)
-layout(t(1:2))
-plotTensor3D(X)
-plotTensor3D(recX, thr=0)
-
-## ----a_bmf, echo=TRUE, fig.height=4, fig.width=8------------------------------
+## ----data2, echo=TRUE, fig.height=2.7, fig.width=8----------------------------
+suppressMessages(library("fields"))
 layout(t(1:3))
-hist(out_dNTF$A[[1]], main="A1", breaks=100)
-hist(out_dNTF$A[[2]], main="A2", breaks=100)
-hist(out_dNTF$A[[3]], main="A3", breaks=100)
+image.plot(X[[1]], main="X1", legend.mar=8)
+image.plot(X[[2]], main="X2", legend.mar=8)
+image.plot(X[[3]], main="X3", legend.mar=8)
 
-## ----data3, echo=TRUE, fig.height=8, fig.width=8------------------------------
-X2 <- nnTensor::toyModel("CP")
-plotTensor3D(X2)
-
-## ----sbmf, echo=TRUE, fig.height=4, fig.width=8-------------------------------
+## ----pls, echo=TRUE-----------------------------------------------------------
 set.seed(123456)
-out_dNTF2 <- dNTF(X2, Bin_A=c(1e+5, 1e+5, 1e-10), algorithm="KL", rank=4)
-str(out_dNTF2, 2)
+out_dPLS <- dPLS(X, Ter_V=1E+5, J=3)
+str(out_dPLS, 2)
 
-## ----conv_sbmf, echo=TRUE, fig.height=4, fig.width=8--------------------------
+## ----conv_pls, echo=TRUE, fig.height=4, fig.width=8---------------------------
 layout(t(1:2))
-plot(log10(out_dNTF2$RecError[-1]), type="b", main="Reconstruction Error")
-plot(log10(out_dNTF2$RelChange[-1]), type="b", main="Relative Change")
+plot(log10(out_dPLS$RecError[-1]), type="b", main="Reconstruction Error")
+plot(log10(out_dPLS$RelChange[-1]), type="b", main="Relative Change")
 
-## ----rec_sbmf, echo=TRUE, fig.height=4, fig.width=8---------------------------
-recX <- recTensor(out_dNTF2$S, out_dNTF2$A)
-layout(t(1:2))
-plotTensor3D(X2)
-plotTensor3D(recX, thr=0)
+## ----rec_pls, echo=TRUE, fig.height=5, fig.width=8----------------------------
+recX <- lapply(seq_along(X), function(x){
+  out_dPLS$U[[x]] %*% t(out_dPLS$V[[x]])
+})
+layout(rbind(1:3, 4:6))
+image.plot(t(X[[1]]))
+image.plot(t(X[[2]]))
+image.plot(t(X[[3]]))
+image.plot(t(recX[[1]]))
+image.plot(t(recX[[2]]))
+image.plot(t(recX[[3]]))
 
-## ----a_sbmf, echo=TRUE, fig.height=4, fig.width=8-----------------------------
-layout(t(1:3))
-hist(out_dNTF2$A[[1]], main="A1", breaks=100)
-hist(out_dNTF2$A[[2]], main="A2", breaks=100)
-hist(out_dNTF2$A[[3]], main="A3", breaks=100)
+## ----u_v, echo=TRUE, fig.height=5, fig.width=8--------------------------------
+layout(rbind(1:3, 4:6))
+hist(out_dPLS$U[[1]], breaks=100)
+hist(out_dPLS$U[[2]], breaks=100)
+hist(out_dPLS$U[[3]], breaks=100)
+hist(out_dPLS$V[[1]], breaks=100)
+hist(out_dPLS$V[[2]], breaks=100)
+hist(out_dPLS$V[[3]], breaks=100)
 
 ## ----sessionInfo, echo=FALSE--------------------------------------------------
 sessionInfo()
